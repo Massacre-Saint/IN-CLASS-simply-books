@@ -46,10 +46,7 @@ const updateAuthor = (authorObj, uid) => new Promise((resolve, reject) => {
 
 const getAuthorBooks = (firebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/books.json?orderBy="author_id"&equalTo="${firebaseKey}"`)
-    .then((response) => {
-      const array = Object.values(response.data);
-      resolve(array);
-    })
+    .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
 
